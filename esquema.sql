@@ -686,5 +686,5 @@ INSERT INTO t_venta (cliente_id, producto_id, cantidad, fecha_venta, total) VALU
 --     se refresca con ANALYZE TABLE (o de forma automatica con el uso).
 -- -------------------------------------------------------------------
 -- ANALYZE TABLE le pide a MySQL que recalcule y actualice las estadísticas internas
--- de una o varias tablas. En este caso, se lo pedimos para las 5 tablas de una vez.
+-- de una o varias tablas. En este caso, se lo pedimos para las 5 tablas de una vez. holaaaaaaaaaaaa
 ANALYZE TABLE t_departamento, t_producto, t_cliente, t_personal, t_venta;
