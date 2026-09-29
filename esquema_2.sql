@@ -71,12 +71,45 @@ FROM esquema;
       
 
 -- consultas a restricciones
+-- metodo 1
+SELECT 
+    constraint_name,
+    constraint_type
+FROM 
+    information_schema.table_constraints
+WHERE
+    table_schema = 'esquema' AND
+    table_name = 't_cliente';
+
+
+-- metodo 2
+SELECT 
+    constraint_name,
+    constraint_type
+FROM 
+    information_schema.table_constraints
+WHERE 
+    LOWER(table_schema) = 'empresa' AND 
+    LOWER(table_name) = 't_personal';
+
+
+
+-- CLAVES FORANEAS
+-----------------------------
+-- detalles de claves foraneas
 
 SELECT 
-   constraint_name,
-   constraint_type
-FROM 
-information_schema.table_constraints
+    k.constraint_name,
+    k.column_name,
+    k.referenced_table_name,
+    k.referenced_column_name
+FROM
+    information_schema.key_column_usage as k 
+JOIN
+    information_schema.table_constraints as t 
+    ON k.constraint_name = t.constraint_name
+    AND k.table_schema = t.table_schema
 WHERE
-table_schema = ' ' AND
-table_name = 'mitabla'
+     t.constraint_type = "FOREIGN KEY"
+     AND k.table_schema = "esquema"
+     AND k.table_name = "t_personal";
