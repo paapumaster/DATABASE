@@ -113,3 +113,5 @@ WHERE
      t.constraint_type = "FOREIGN KEY"
      AND k.table_schema = "esquema"
      AND k.table_name = "t_personal";
+
+
