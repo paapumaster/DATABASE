@@ -227,3 +227,22 @@ INSERT INTO t_empleado (id, nombre, departamento_id, salario, fecha_contrato) VA
 (148, 'Consolación Vega', 15, 3500000.00, '2020-02-29'),
 (149, 'Victoriano Ferrer', 15, 37000.00, '2019-10-12'),
 (150, 'Asunción Peña', 15, 34000.00, '2020-08-05');
+
+
+
+
+-- Vista de empleados con salario sobre 1.000.000 de peses 
+
+CREATE VIEW v_empleado_alto_salario AS 
+   SELECT id, nombre, salario
+   FROM t_empleado
+   WHERE salario > 1000000;
+
+
+-- Vista simple: empleados contratados este año
+
+
+CREATE VIEW v_empleado_nuevo AS 
+   SELECT nombre, fecha_contrato, salario
+   FROM t_empleado
+   WHERE YEAR (fecha_contrato) = YEAR(CURDATE());
