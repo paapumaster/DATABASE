@@ -54,3 +54,13 @@ WHERE MONTH(fecha_contratacion)= 3;
 SELECT 
 CONCAT(UPPER(TRIM(nombre)), ' ' , LOWER(TRIM(apellido))) AS nombre_completo
 FROM t_empleado;
+
+-- genere un codigo de empleado que consista en el id, la primera letra del nombre y la primera letra del apellido
+-- todo en MAYUSCULAS
+
+SELECT 
+    id, 
+    nombre, 
+    apellido, 
+    CONCAT(id, UPPER(LEFT(nombre, 1)), UPPER(LEFT(apellido, 1))) AS codigo_empleado
+FROM t_empleado;
