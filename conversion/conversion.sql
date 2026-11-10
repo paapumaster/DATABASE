@@ -70,3 +70,32 @@ SELECT
     SUM(CAST(precio AS DECIMAL(10,2)) * CAST(cantidad AS SIGNED)) AS total_ventas_general
 FROM t_venta
 GROUP BY producto;
+
+
+-- mostrar todos los productos vendidos el segundo semestre del 2026 (filtrar por rango de fechas)
+SELECT 
+    id,
+    precio,
+    cantidad,
+    producto,
+    fecha_venta
+FROM t_venta
+WHERE CAST(fecha_venta AS DATE) BETWEEN '2025-07-01' AND '2025-12-31';
+
+
+-- Genere un listado de productos, en donde se despliegue el producto y su precio, ordenado numericamente de menor a mayor por precio
+SELECT 
+    producto,
+    precio
+FROM t_venta
+ORDER BY CAST(precio AS DECIMAL(10,2)) ASC;
+
+
+
+-- ejercicio 4 genere una salida de la tabla ventas con el producto, el precio con el simbolo "$" la cantidad y la fecha en formato dd/mm/aaaa
+SELECT 
+    producto,
+    CONCAT('$', precio) AS precio,
+    cantidad,
+    DATE_FORMAT(CAST(fecha_venta AS DATE), '%d/%m/%Y') AS fecha_venta
+FROM t_venta;
